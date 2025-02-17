@@ -1,0 +1,43 @@
+# docker-compose.yml :
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: my_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: wifi_mapper_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # ✅ Persist data
+      - ./db_init/init.sql:/docker-entrypoint-initdb.d/init.sql # ✅ Load schema on startup
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      retries: 5
+      timeout: 5s
+
+  backend:
+    build: .
+    container_name: WifiMapper_backend
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - PORT=5000
+      - DB_USER=postgres
+      - DB_PASSWORD=mysecretpassword
+      - DB_HOST=my_postgres
+      - DB_PORT=5432
+      - DB_DATABASE=wifi_mapper_db
+    ports:
+      - "5000:5000"
+
+volumes:
+  postgres_data:
+    external: false # ✅ Keeps data persistent inside the container
