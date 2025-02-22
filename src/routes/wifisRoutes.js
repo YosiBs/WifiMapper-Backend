@@ -1,14 +1,14 @@
 const express = require("express");
-const LogsController = require("../controllers/logsController");
+const wifisController = require("../controllers/wifisController");
 
 const router = express.Router();
 
 /**
  * @swagger
- * /logs:
+ * /wifis:
  *   post:
- *     summary: Create a new log
- *     tags: [Logs]
+ *     summary: Create a new wifi
+ *     tags: [wifis]
  *     requestBody:
  *       required: true
  *       content:
@@ -16,13 +16,11 @@ const router = express.Router();
  *           schema:
  *             type: object
  *             required:
- *               - appId
- *               - userId
- *               - logType
+ *               - wifiSSID
  *             properties:
- *               appId:
+ *               wifiSSID:
  *                 type: string
- *                 description: The application ID
+ *                 description: The Wifi SSID
  *               userId:
  *                 type: string
  *                 description: The user ID
