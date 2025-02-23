@@ -7,6 +7,8 @@ const swaggerSpec = require("./docs/swaggerConfig");
 const cors = require("cors");
 
 const logsRoutes = require("./routes/logsRoutes");
+const wifiRoutes = require("./routes/wifi_networks_Routes"); // ✅ Import WiFi routes
+const wifiScansRoutes = require("./routes/wifi_scans_Routes"); // ✅ Import WiFi Scans routes
 
 const app = express();
 app.use(bodyParser.json());
@@ -14,6 +16,8 @@ app.use(cors());
 // API Routes
 
 app.use("/api/logs", logsRoutes);
+app.use("/api/wifi", wifiRoutes); // ✅ Add WiFi routes
+app.use("/api/wifi-scans", wifiScansRoutes); // ✅ Add WiFi Scans routes
 
 // Swagger Documentation Route
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));

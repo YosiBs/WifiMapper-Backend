@@ -37,7 +37,6 @@ services:
       - DB_DATABASE=wifi_mapper_db
     ports:
       - "5000:5000"
-
 volumes:
   postgres_data:
     external: false # ✅ Keeps data persistent inside the container

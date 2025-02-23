@@ -1,0 +1,45 @@
+# 📌 WifiMapper Backend - Commands Guide
+
+## 🚀 Docker Commands
+
+### 🛠 Basic Setup
+
+```sh
+  docker-compose up -d  # Start all containers in the background
+  docker-compose up --build  # Rebuild and start containers
+  docker-compose down  # Stop and remove all containers
+  docker ps  # List running containers
+  docker logs WifiMapper_backend  # Show backend logs
+```
+
+### 🛠 Connecting to Containers
+
+```sh
+  docker exec -it WifiMapper_backend sh  # Open shell in backend container
+  docker exec -it my_postgres psql -U postgres  # Connect to PostgreSQL inside container
+```
+
+## 🚀 Docker Commands
+
+### 🛠 Connecting to Database
+
+```sh
+  docker exec -it my_postgres psql -U postgres -d wifi_mapper_test
+```
+
+### 🛠 Database Queries
+
+```sh
+  SELECT * FROM wifi_networks;
+  DELETE FROM wifi_networks WHERE bssid = '00:1A:2B:3C:4D:5E';readm
+```
+
+## 🚀 Running Tests
+
+### 🛠 Running Jest
+
+```sh
+  docker exec WifiMapper_backend npm test  # Run Jest tests
+  docker exec WifiMapper_backend npm test -- --detectOpenHandles  # Debug open handles
+  docker exec WifiMapper_backend npm test -- --verbose  # Run Jest in verbose mode
+```

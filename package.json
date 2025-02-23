@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=test jest",
     "dev": "nodemon src/server.js",
     "start": "node src/server.js"
   },
@@ -22,7 +22,9 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "nodemon": "^3.1.7",
+    "supertest": "^7.0.0",
     "swagger-jsdoc": "^6.2.8"
   }
 }

@@ -1,3 +1,5 @@
+//logsController.js
+
 const LogsService = require("../services/logsService");
 const pool = require("../config/db");
 
