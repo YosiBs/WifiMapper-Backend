@@ -16,16 +16,6 @@ const WifiNetworksService = {
     return await WifiNetworksModel.getAllWifiNetworks();
   },
 
-  // ✅ Add a new WiFi scan entry
-  addWifiScan: async (scanData) => {
-    return await WifiNetworksModel.addWifiScan(scanData);
-  },
-
-  // ✅ Get all WiFi scans for a specific BSSID
-  getScansByBssid: async (bssid) => {
-    return await WifiNetworksModel.getScansByBssid(bssid);
-  },
-
   // ✅ Delete a WiFi network (Cascade deletes scans)
   deleteWifiByBssid: async (bssid) => {
     return await WifiNetworksModel.deleteWifiByBssid(bssid);

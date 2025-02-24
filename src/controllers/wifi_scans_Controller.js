@@ -35,9 +35,7 @@ const WifiScansController = {
       const scans = await WifiScansService.getScansByBssid(bssid);
 
       if (!scans || scans.length === 0) {
-        return res
-          .status(404)
-          .json({ message: "No scans found for this BSSID." });
+        return res.status(200).json([]); // ✅ Return an empty array
       }
 
       res.status(200).json(scans);

@@ -1,4 +1,6 @@
 const WifiNetworksService = require("../services/wifi_networks_Service");
+const WifiLocationService = require("../services/wifi_location_Service");
+
 const pool = require("../config/db");
 
 const WifiNetworksController = {
@@ -56,25 +58,6 @@ const WifiNetworksController = {
     }
   },
 
-  // Get all scans for a specific BSSID
-  getScansByBssid: async (req, res) => {
-    try {
-      const { bssid } = req.params;
-      const scans = await WifiNetworksService.getScansByBssid(bssid);
-
-      if (!scans || scans.length === 0) {
-        return res
-          .status(404)
-          .json({ message: "No scans found for this BSSID." });
-      }
-
-      res.status(200).json(scans);
-    } catch (error) {
-      console.error("Error fetching WiFi scans:", error);
-      res.status(500).json({ error: "Internal Server Error" });
-    }
-  },
-
   // Delete a WiFi network (Cascade deletes its scans too)
   deleteWifiByBssid: async (req, res) => {
     try {
@@ -92,6 +75,26 @@ const WifiNetworksController = {
       });
     } catch (error) {
       console.error("Error deleting WiFi network:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  },
+
+  // ✅ Get estimated location of a WiFi network
+  getEstimatedLocation: async (req, res) => {
+    try {
+      const { bssid } = req.params;
+      const estimatedLocation =
+        await WifiLocationService.getEstimatedWifiLocation(bssid);
+
+      if (!estimatedLocation) {
+        return res.status(404).json({
+          message: "No location data available for this WiFi network.",
+        });
+      }
+
+      res.status(200).json(estimatedLocation);
+    } catch (error) {
+      console.error("Error calculating estimated WiFi location:", error);
       res.status(500).json({ error: "Internal Server Error" });
     }
   },

@@ -83,29 +83,6 @@ router.get("/", WifiNetworksController.getAllWifiNetworks);
 
 /**
  * @swagger
- * /wifi/{bssid}/scans:
- *   get:
- *     summary: Get all scans for a specific BSSID
- *     tags: [WiFi Networks]
- *     parameters:
- *       - in: path
- *         name: bssid
- *         required: true
- *         schema:
- *           type: string
- *         description: The BSSID (MAC Address) of the WiFi network
- *     responses:
- *       200:
- *         description: List of WiFi scan records
- *       404:
- *         description: No scans found for this BSSID
- *       500:
- *         description: Internal server error
- */
-router.get("/:bssid/scans", WifiNetworksController.getScansByBssid);
-
-/**
- * @swagger
  * /wifi/{bssid}:
  *   delete:
  *     summary: Delete a WiFi network by BSSID (Removes related scans)
@@ -126,5 +103,28 @@ router.get("/:bssid/scans", WifiNetworksController.getScansByBssid);
  *         description: Internal server error
  */
 router.delete("/:bssid", WifiNetworksController.deleteWifiByBssid);
+
+/**
+ * @swagger
+ * /wifi/{bssid}/estimate:
+ *   get:
+ *     summary: Get estimated location of a WiFi network
+ *     tags: [WiFi Networks]
+ *     parameters:
+ *       - in: path
+ *         name: bssid
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The BSSID (MAC Address) of the WiFi network
+ *     responses:
+ *       200:
+ *         description: Estimated WiFi location
+ *       404:
+ *         description: No location data available
+ *       500:
+ *         description: Internal server error
+ */
+router.get("/:bssid/estimate", WifiNetworksController.getEstimatedLocation);
 
 module.exports = router;

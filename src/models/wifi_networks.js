@@ -30,44 +30,6 @@ const WifiNetworksModel = {
     return result.rows;
   },
 
-  // ✅ Add a WiFi scan (signal strength, timestamp, location)
-  addWifiScan: async ({
-    bssid,
-    signal_strength,
-    device_id,
-    location_lat,
-    location_lon,
-  }) => {
-    const query = `
-            INSERT INTO wifi_scans (bssid, signal_strength, device_id, location_lat, location_lon)
-            VALUES ($1, $2, $3, $4, $5)
-            RETURNING *;
-        `;
-
-    const values = [
-      bssid,
-      signal_strength,
-      device_id,
-      location_lat,
-      location_lon,
-    ];
-
-    const result = await pool.query(query, values);
-    return result.rows[0];
-  },
-
-  // ✅ Get all scans for a specific BSSID
-  getScansByBssid: async (bssid) => {
-    const query = `
-            SELECT * FROM wifi_scans
-            WHERE bssid = $1
-            ORDER BY scan_timestamp DESC;
-        `;
-
-    const result = await pool.query(query, [bssid]);
-    return result.rows;
-  },
-
   // ✅ Delete a WiFi network (Cascade deletes scans)
   deleteWifiByBssid: async (bssid) => {
     const query = `DELETE FROM wifi_networks WHERE bssid = $1 RETURNING *;`;

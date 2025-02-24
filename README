@@ -21,6 +21,18 @@
 
 ## 🚀 Docker Commands
 
+## 🔄 TL;DR - Managing Docker Containers in PowerShell
+
+| **Goal**                                | **Command / Shortcut**              |
+| --------------------------------------- | ----------------------------------- |
+| Start Docker & keep terminal free       | `docker-compose up --build -d`      |
+| Detach from running logs (keep running) | `CTRL + P, CTRL + Q`                |
+| Stop and return to PowerShell           | `CTRL + C` (but stops containers)   |
+| Reattach to logs later                  | `docker logs -f WifiMapper_backend` |
+| Reattach to all logs                    | `docker-compose logs -f`            |
+
+🚀 **Now you can freely switch between Docker and PowerShell without stopping your containers!** 🔥
+
 ### 🛠 Connecting to Database
 
 ```sh
