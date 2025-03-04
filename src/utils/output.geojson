@@ -1,0 +1,73 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "0e1aea96-779a-4afa-abe6-4141e7efeed3",
+        "bssid": "b0:bb:e5:83:61:55",
+        "signal_strength": -36,
+        "scan_timestamp": "2025-02-27T23:11:32.950Z",
+        "device_id": "device555"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7694602,
+          31.9638067
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "a502461e-5647-46af-8e8f-b51df21134e9",
+        "bssid": "b0:bb:e5:83:61:55",
+        "signal_strength": -36,
+        "scan_timestamp": "2025-02-27T23:11:31.170Z",
+        "device_id": "device123"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7694602,
+          31.9648066
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "5058a8b8-ca19-4b1e-9105-98bab7cde922",
+        "bssid": "b0:bb:e5:83:61:55",
+        "signal_strength": -36,
+        "scan_timestamp": "2025-02-27T23:11:29.629Z",
+        "device_id": "device123"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7694602,
+          31.9638066
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "04f6e31a-d018-493c-b581-eb3ac45e92aa",
+        "bssid": "b0:bb:e5:83:61:55",
+        "signal_strength": -36,
+        "scan_timestamp": "2025-02-27T23:11:27.947Z",
+        "device_id": "device123"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7694602,
+          31.9658066
+        ]
+      }
+    }
+  ]
+}

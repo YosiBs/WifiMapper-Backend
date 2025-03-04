@@ -21,6 +21,6 @@ CREATE TABLE IF NOT EXISTS wifi_scans (
     signal_strength INT,  -- Signal strength in dBm (-30 strong, -90 weak)
     scan_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- When scan was recorded
     device_id TEXT,  -- Identifier for the device that recorded the scan (optional)
-    location_lat DECIMAL(9,6),  -- Latitude (if GPS is enabled)
-    location_lon DECIMAL(9,6)   -- Longitude (if GPS is enabled)
+    location_lat DECIMAL(15,13),  -- Latitude (if GPS is enabled)
+    location_lon DECIMAL(15,13)   -- Longitude (if GPS is enabled)
 );
